@@ -1,0 +1,24 @@
+:: Unification Notes ::
+
+Basic Rules:
+
+	We are trying to find variables that make multiple terms match:
+		- ex) f(a+a,a,C) = f(1+1, B, f(a)) => {a=1, B=1, C=f(1)} (Substution in this case)
+
+	Using First-Order Logic and basic ideas, we have a few rules for the following Terms:
+		- lowercase char represents a constant (so do numbers, obviously)
+		- Uppercase Char represents a Variable
+		- f(Maybe V,...) represents a function applied to parameters
+			-- V is a variable term (can be a function call or a constant)
+
+Pattern Matching:
+	
+	Unification problems are broken down into a series of Equations:
+		- Problem → { Equations }
+		- Equations → Equation | Equation , Equations
+
+	Each equation has a left and right Expression (Expr):
+		- Equation → Expr = Expr
+
+	Some problems may have up to an infinite number of solutions. (We can error out on self-reference (eg. A=f(A)))
+	Our Goal is to find the Most General Unifier (MGU).
