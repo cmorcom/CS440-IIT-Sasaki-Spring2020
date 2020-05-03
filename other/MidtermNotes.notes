@@ -1,0 +1,179 @@
+CS 440 Exam 1
+Thu Mar 5, 10:00 - 11:15 am
+1 sheet of notes both sides
+Bring a pencil and eraser (bubble sheet for m/c questions)
+
+Topics, Lectures 1-12, HW 1-6
+
+Lecture 1: Haskell 1
+	Basic properties
+!*	laziness
+!*	higher-order functions
+!*	referential transparency and purity
+!	ghci
+!*	lists, list ranges, list comprehensions
+
+Lecture 2: Haskell 2
+!	Infix operators in prefix
+!	infinite lists
+*	tuples #fat, and operators
+	zip #takes two lists and makes a list of pairs
+*	what are types #Int, Integer, Float, DOuble, Bool, Char, (a,c,...) (tuples type)
+*	type annotations #record syntax?
+*	type variables, parametric polymorphic types !non type-bound a!, … 
+*	cf templates #custom types?
+*	boxed/unboxed values #ex. data Point = Point {x :: Float, y :: Float} deriving(Show)
+!	type inference
+!	type classes
+!*	primitive types (Int, Char, etc.)
+!	polymorphic constants
+
+Lecture 3: Haskell 3
+*	Typechecking: Static, Dynamic #done During or before exec
+*	Typechecking: Strong, and Weak #HS is type-safe; c is not
+*	Declaring functions using pattern matching
+<>	*patterns and pattern matching*
+	cases with guards
+	let expression
+*	case expression
+
+Lecture 4: Haskell 4
+	Ch 06 Higher-Order functions
+	"n"-argument functions
+	currying and uncurrying
+*	map,  filter
+*	lambda functions
+	f x y = body is the same as f = \ x y -> body
+	folding lists
+
+Lecture 5: Haskell 5
+*	Tail recursion
+	Looping as tail recursion
+	User-defined types:
+*	data declarations
+*	deriving clause
+-	enum types
+-	tuple-like structures
+*	parts of a structure
+*		data D = X Int | Y Char
+*		X and Y are constructors
+*			they can be used to create values of type D
+*			they can appear in patterns so you can ask
+*				"What kind of a D is this?"
+-	union / alternatives
+	nested structures
+	parameterized structures
+	either
+*	maybe
+	recursive structures List a
+*	Tree a (leaf and node data)
+*	type decl - synonym for a type expression
+*	structural equivalence, name equivalence
+
+Lecture 6: Compilers, Languages, Reg Exprs
+*	Basics of compilers
+	compiler phases
+*	Basics of languages
+		(symbol, alphabet Sigma, language subset of Sigma star)
+*	regular expressions: Basic syntax (juxtapose, or, star)
+	Advanced syntax (?, [..], [^..], \d, dot, ^head, end$))
+*	Examples of regexprs
+	(identifier, integer, at least 3 a's, exactly 3 a's, at most 3 a's
+	nonempty seq of x separated by commas or terminated by semicolons)
+
+Lecture 7: Recognizer for Reg Exprs
+	Implementation of recognizer
+	constants
+	sequences
+	alternation
+	skeleton code for match
+	(activity adds dot, $, empty)
+
+Lecture 8: Finite State Machines
+*	Regexpr to FSM intuition
+*	FSM defn
+	FSM example (2 b's)
+*	transition table and diagram
+*	NFA
+*	n.d. choice vs backtracking execution
+*	stuck computations
+*	epsilon transitions
+*	state transition diagrams for NFAs
+	NFA examples: 2 versions of (ab)*a
+	NFA execution: backtracking search
+*	set of possible states
+	simultaneous multiple states
+	RE using NFA
+*	NFA to DFA
+	drop error states
+	epsilon-closure of NFA
+*	set of states transformation
+	removing stuck configurations
+*	regular expressions = NFA = DFA
+
+Lecture 9: Scanners
+*	Lexical scanner
+*	reln to FSM
+
+Lecture 9: Grammars and Productions
+*	Grammar, nonterminal and terminal symbols, production rules
+	Example (S -> a S b, S -> epsilon)
+*	Kinds of grammars (regular = reg expr, cfg, csg, general)
+*	productions
+*	language of grammar
+	Example a^n b^n
+	Example: palindromes
+*	leftmost and rightmost derivations
+*	parse trees
+*	ambiguous grammars
+	Disambiguating grammars
+
+
+Lectures 10-12: Recursive Descent Parsing
+
+Lecture 10: Top-down parsing
+*	Example (ambiguous E + E etc)
+*	left recursion problem, removing left recursion
+		E -> E + E | T
+		this generates E ->* E + E + ... + E -> T + E + ... + E
+		change E -> T SomethingForListOfPlusEs
+*	Recursive descent parsing
+*	predictive parsing, lookahead, LL(1) grammar
+		problem with X -> Y | Y Z
+					 X -> Y Ylist
+					 Ylist -> Y Ylist
+					 Ylist -> epsilon
+	pseudocode for recognizing expressions
+	haskell code for recognizing expressions
+
+Lecture 11: Modules
+*	import
+-	Data.Char
+-	Data.List
+*	module declaration
+		module Filename where ...
+		module Foldername.Filename where ...
+
+Lecture 11: Recursive descent parsing
+	building and returning parse trees
+	shortening parse trees
+
+Lecture 12: Declare bind
+	try using bind (5 attempts)
+	bind with unnamed lambdas
+*	Maybe monad
+*	type of bind and maybe monad
+		Maybe a -> (a -> Maybe b) -> Maybe b
+		bind used to cut down on nested case expressions
+	fails function
+
+Possible written questions include
+.	RE for <description> or <description> for RE
+. 	Small NFA -> DFA transform
+.	Short list-based functions (list comprehensions, e.g.)
+.	A map or filter applied to a list
+.	Given a data declaration, short program involving it
+	.	E.g., given one or two Maybe values, check the values and ....
+
+The activities don't include enough questions like
+	what is a <fill in>, why do we use them?

@@ -227,7 +227,7 @@ parse_argtail input =
     Just ([], input) )
 
 --
--- A parenthesized expression is surrounded by parentheses.
+-- A parenthesized expression is          rrounded by parentheses.
 --
 -- Grammar rule: Paren_E -> \( E \)
 --
